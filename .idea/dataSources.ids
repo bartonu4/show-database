@@ -1,0 +1,85 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<component name="dataSourceStorage">
+  <data-source name="MySQL - lab@localhost" uuid="685e20f2-e21e-47d3-bfd0-5cf27e1ed41b">
+    <database-info product="MySQL" version="5.6.17" jdbc-version="4.0" driver-name="MySQL Connector Java" driver-version="mysql-connector-java-5.1.35 ( Revision: 5fb9c5849535c13917c2cf9baaece6ef9693ef27 )">
+      <extra-name-characters>#@</extra-name-characters>
+      <identifier-quote-string>`</identifier-quote-string>
+    </database-info>
+    <case-sensitivity plain-identifiers="lower" quoted-identifiers="lower"/>
+    <schema name="" catalog="lab"/>
+    <table name="anime" schema="" catalog="lab" type="TABLE">
+      <column name="name" sqlType="VARCHAR" precision="255" scale="0" nullable="false" jdbcType="12" def="Jyc="/>
+      <column name="type" sqlType="VARCHAR" precision="255" scale="0" nullable="false" jdbcType="12" def="JzAn"/>
+      <column name="part" sqlType="INT" precision="10" scale="0" nullable="false" jdbcType="4" def="MA=="/>
+      <column name="year" sqlType="INT" precision="10" scale="0" nullable="false" jdbcType="4"/>
+      <column name="votes" sqlType="INT" precision="10" scale="0" nullable="false" jdbcType="4"/>
+      <column name="studio" sqlType="VARCHAR" precision="255" scale="0" nullable="false" jdbcType="12"/>
+      <column name="description" sqlType="MEDIUMTEXT" precision="16777215" scale="0" nullable="true" jdbcType="-1"/>
+      <column name="position" sqlType="INT" precision="10" scale="0" nullable="true" jdbcType="4"/>
+      <column name="epcount" sqlType="INT" precision="10" scale="0" nullable="false" jdbcType="4"/>
+      <column name="origins" sqlType="VARCHAR" precision="255" scale="0" nullable="false" jdbcType="12"/>
+      <column name="image" sqlType="VARCHAR" precision="255" scale="0" nullable="false" jdbcType="12"/>
+      <primary-key name="PRIMARY" columns="name,type,part"/>
+      <exported-key name="fu" table="user_vote" schema="" catalog="lab" columns="name,type,part"/>
+    </table>
+    <table name="bookmarks" schema="" catalog="lab" type="TABLE">
+      <column name="user_id" sqlType="INT" precision="10" scale="0" nullable="false" jdbcType="4"/>
+      <column name="name" sqlType="VARCHAR" precision="255" scale="0" nullable="false" jdbcType="12"/>
+      <column name="type" sqlType="VARCHAR" precision="255" scale="0" nullable="false" jdbcType="12" def="Jyc="/>
+      <column name="part" sqlType="INT" precision="10" scale="0" nullable="false" jdbcType="4"/>
+      <column name="choose" sqlType="INT" precision="10" scale="0" nullable="false" jdbcType="4" def="MA=="/>
+      <primary-key name="PRIMARY" columns="user_id,name,type,part,choose"/>
+      <foreign-key name="bookmarks_ibfk_1" columns="user_id" ref-table="users" ref-schema="" ref-catalog="lab" ref-columns="id" update-rule="3" delete-rule="3" deferrability="2"/>
+    </table>
+    <table name="comments" schema="" catalog="lab" type="TABLE">
+      <column name="id" sqlType="INT" precision="10" scale="0" nullable="false" jdbcType="4" autoIncrement="true"/>
+      <column name="user_id" sqlType="INT" precision="10" scale="0" nullable="false" jdbcType="4"/>
+      <column name="name" sqlType="VARCHAR" precision="255" scale="0" nullable="false" jdbcType="12"/>
+      <column name="type" sqlType="VARCHAR" precision="255" scale="0" nullable="false" jdbcType="12"/>
+      <column name="part" sqlType="INT" precision="10" scale="0" nullable="false" jdbcType="4"/>
+      <column name="comment" sqlType="MEDIUMTEXT" precision="16777215" scale="0" nullable="true" jdbcType="-1"/>
+      <column name="reply_to" sqlType="INT" precision="10" scale="0" nullable="true" jdbcType="4" def="LTE="/>
+      <primary-key name="PRIMARY" columns="id"/>
+    </table>
+    <table name="genres" schema="" catalog="lab" type="TABLE">
+      <column name="name" sqlType="VARCHAR" precision="255" scale="0" nullable="false" jdbcType="12"/>
+      <column name="type" sqlType="VARCHAR" precision="255" scale="0" nullable="true" jdbcType="12"/>
+      <column name="part" sqlType="INT" precision="10" scale="0" nullable="false" jdbcType="4"/>
+      <column name="genre" sqlType="VARCHAR" precision="255" scale="0" nullable="false" jdbcType="12"/>
+    </table>
+    <table name="user_vote" schema="" catalog="lab" type="TABLE">
+      <column name="id" sqlType="INT" precision="10" scale="0" nullable="false" jdbcType="4"/>
+      <column name="name" sqlType="VARCHAR" precision="255" scale="0" nullable="false" jdbcType="12"/>
+      <column name="type" sqlType="VARCHAR" precision="255" scale="0" nullable="false" jdbcType="12"/>
+      <column name="part" sqlType="INT" precision="10" scale="0" nullable="false" jdbcType="4"/>
+      <column name="vote" sqlType="INT" precision="10" scale="0" nullable="false" jdbcType="4" def="MA=="/>
+      <primary-key name="PRIMARY" columns="id,name,type,part"/>
+      <foreign-key name="fu" columns="name,type,part" ref-table="anime" ref-schema="" ref-catalog="lab" ref-columns="name,type,part" update-rule="0" delete-rule="3" deferrability="2"/>
+      <index name="fu_idx" unique="false" columns="name,type,part"/>
+    </table>
+    <table name="users" schema="" catalog="lab" type="TABLE">
+      <column name="id" sqlType="INT" precision="10" scale="0" nullable="false" jdbcType="4" autoIncrement="true"/>
+      <column name="password" sqlType="VARCHAR" precision="70" scale="0" nullable="true" jdbcType="12"/>
+      <column name="email" sqlType="VARCHAR" precision="50" scale="0" nullable="true" jdbcType="12"/>
+      <column name="created_at" sqlType="TIMESTAMP" precision="19" scale="0" nullable="true" jdbcType="93"/>
+      <column name="updated_at" sqlType="TIMESTAMP" precision="19" scale="0" nullable="true" jdbcType="93"/>
+      <column name="remember_token" sqlType="VARCHAR" precision="100" scale="0" nullable="true" jdbcType="12"/>
+      <column name="name" sqlType="VARCHAR" precision="255" scale="0" nullable="true" jdbcType="12"/>
+      <primary-key name="PRIMARY" columns="id"/>
+      <exported-key name="bookmarks_ibfk_1" table="bookmarks" schema="" catalog="lab" columns="user_id"/>
+    </table>
+    <table name="votes" schema="" catalog="lab" type="TABLE">
+      <column name="name" sqlType="VARCHAR" precision="255" scale="0" nullable="false" jdbcType="12"/>
+      <column name="vote_1" sqlType="INT" precision="10" scale="0" nullable="true" jdbcType="4"/>
+      <column name="vote_2" sqlType="INT" precision="10" scale="0" nullable="true" jdbcType="4"/>
+      <column name="vote_3" sqlType="INT" precision="10" scale="0" nullable="true" jdbcType="4"/>
+      <column name="vote_4" sqlType="INT" precision="10" scale="0" nullable="true" jdbcType="4"/>
+      <column name="vote_5" sqlType="INT" precision="10" scale="0" nullable="true" jdbcType="4"/>
+      <column name="type" sqlType="VARCHAR" precision="255" scale="0" nullable="false" jdbcType="12"/>
+      <column name="part" sqlType="INT" precision="10" scale="0" nullable="false" jdbcType="4"/>
+      <column name="rating" sqlType="DOUBLE" precision="22" scale="0" nullable="false" jdbcType="8" def="MA=="/>
+      <column name="bayes" sqlType="DOUBLE" precision="22" scale="0" nullable="false" jdbcType="8"/>
+      <primary-key name="PRIMARY" columns="name,type,part"/>
+    </table>
+  </data-source>
+</component>

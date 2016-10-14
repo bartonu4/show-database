@@ -1,0 +1,34 @@
+body{
+    background-color:		#f7f7f7;
+    background-image:		-moz-linear-gradient(top, rgba(0,0,0,0.05), rgba(0,0,0,0)),		url( ../assets/images/bg01.png);
+    background-image:		-webkit-linear-gradient(top, rgba(0,0,0,0.05), rgba(0,0,0,0)),	url( ../assets/images/bg01.png);
+    background-image:		-o-linear-gradient(top, rgba(0,0,0,0.05), rgba(0,0,0,0)),		url( ../assets/images/bg01.png);
+    background-image:		-ms-linear-gradient(top, rgba(0,0,0,0.05), rgba(0,0,0,0)),		url( ../assets/images/bg01.png);
+    background-image:		linear-gradient(top, rgba(0,0,0,0.05), rgba(0,0,0,0)),			url(' bg01.png');
+    background-position:	top left,														top left;
+    background-repeat:		repeat-x,														repeat;
+    background-size:		100% 30em,														auto;
+}
+.ui.top.menu.custom{
+
+ background-color:		#f7f7f7;
+background-image:		-moz-linear-gradient(top, rgba(0,0,0,0.05), rgba(0,0,0,0)),		url( ../assets/images/bg01.png);
+background-image:		-webkit-linear-gradient(top, rgba(0,0,0,0.05), rgba(0,0,0,0)),	url( ../assets/images/bg01.png);
+background-image:		-o-linear-gradient(top, rgba(0,0,0,0.05), rgba(0,0,0,0)),		url( ../assets/images/bg01.png);
+background-image:		-ms-linear-gradient(top, rgba(0,0,0,0.05), rgba(0,0,0,0)),		url( ../assets/images/bg01.png);
+background-image:		linear-gradient(top, rgba(0,0,0,0.05), rgba(0,0,0,0)),			url( ../assets/images/bg01.png);
+background-position:	top left,														top left;
+background-repeat:		repeat-x,														repeat;
+background-size:		100% 30em,														auto;
+    border: none;
+}
+.banner{
+
+}
+#bannerid{
+
+    background-color:		#f7f7f7;
+    padding-left: 0;
+    padding-right: 0;
+
+}
